@@ -136,9 +136,9 @@ export default class Game extends Phaser.Scene {
 
     this.physics.world.disableBody(carrot.body);
 
-    this.carrotsCollected += 1;
-
     const value = `Carrots: ${this.carrotsCollected}`;
     this.carrotsCollectedText.text = value;
+
+    this.carrotsCollected += 1;
   }
 }
