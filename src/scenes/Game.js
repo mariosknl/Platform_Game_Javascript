@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import Carrot from '../game/Carrot';
 
 export default class Game extends Phaser.Scene {
   player() {}
@@ -6,6 +7,8 @@ export default class Game extends Phaser.Scene {
   platforms() {}
 
   cursors() {}
+
+  carrots() {}
 
   constructor() {
     super('game');
@@ -15,6 +18,7 @@ export default class Game extends Phaser.Scene {
     this.load.image('background', '../src/assets/bg_layer1.png');
     this.load.image('platform', '../src/assets/ground_grass.png');
     this.load.image('bunny-stand', '../src/assets/bunny1_stand.png');
+    this.load.image('carrot', '../src/assets/carrot.png');
     this.cursors = this.input.keyboard.createCursorKeys();
   }
 
@@ -45,6 +49,11 @@ export default class Game extends Phaser.Scene {
     this.cameras.main.startFollow(this.player);
 
     this.cameras.main.setDeadzone(this.scale.width * 1.5);
+
+    this.carrots = this.physics.add.group({
+      classType: Carrot,
+    });
+    this.carrots.get(240, 320, 'carrot');
   }
 
   update(t, dt) {
