@@ -66,6 +66,8 @@ export default class Game extends Phaser.Scene {
       if (platform.y >= scrollY + 700) {
         platform.y = scrollY - Phaser.Math.Between(50, 100);
         platform.body.updateFromGameObject();
+
+        this.addCarrotAbove(platform);
       }
     });
 
