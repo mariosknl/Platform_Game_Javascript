@@ -2,14 +2,6 @@ import Phaser from 'phaser';
 import Carrot from '../game/Carrot';
 
 export default class Game extends Phaser.Scene {
-  player() {}
-
-  platforms() {}
-
-  cursors() {}
-
-  carrots() {}
-
   constructor() {
     super('game');
   }
@@ -64,9 +56,14 @@ export default class Game extends Phaser.Scene {
       undefined,
       this,
     );
+
+    const style = { color: '#000', fontSize: 24 };
+    this.add.text(240, 10, 'Carrots: 0', style)
+      .setScrollFactor(0)
+      .setOrigin(0.5, 0);
   }
 
-  update(t, dt) {
+  update() {
     this.platforms.children.iterate(child => {
       const platform = child;
 
@@ -77,6 +74,16 @@ export default class Game extends Phaser.Scene {
 
         this.addCarrotAbove(platform);
       }
+
+      this.carrots.children.iterate(child => {
+        const carrot = child;
+
+        const { scrollY } = this.cameras.main;
+        if (carrot.y >= scrollY + 700) {
+          carrot.y = scrollY - Phaser.Math.Between(50, 100);
+          carrot.body.updateCenter();
+        }
+      });
     });
 
     const touchingDown = this.player.body.touching.down;
@@ -127,5 +134,7 @@ export default class Game extends Phaser.Scene {
     this.carrots.killAndHide(carrot);
 
     this.physics.world.disableBody(carrot.body);
+
+    this.carrotsCollected += 1;
   }
 }
