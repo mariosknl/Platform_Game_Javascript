@@ -1,9 +1,14 @@
+/* eslint-disable no-continue */
 import Phaser from 'phaser';
 import Carrot from '../game/Carrot';
 
 export default class Game extends Phaser.Scene {
   constructor() {
     super('game');
+    this.carrotsCollected = 0;
+  }
+
+  init() {
     this.carrotsCollected = 0;
   }
 
@@ -104,7 +109,7 @@ export default class Game extends Phaser.Scene {
 
     const bottomPlatform = this.findBottomMostPlatform();
     if (this.player.y > bottomPlatform.y + 200) {
-      console.log('game over');
+      this.scene.start('game-over');
     }
   }
 
