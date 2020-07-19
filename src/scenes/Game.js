@@ -54,6 +54,8 @@ export default class Game extends Phaser.Scene {
       classType: Carrot,
     });
     this.carrots.get(240, 320, 'carrot');
+
+    this.physics.add.collider(this.platforms, this.carrots);
   }
 
   update(t, dt) {
@@ -92,5 +94,17 @@ export default class Game extends Phaser.Scene {
     } else if (sprite.x > gameWidth + halfWidth) {
       sprite.x = -halfWidth;
     }
+  }
+
+  addCarrotAbove(sprite) {
+    const y = sprite.y - sprite.displayHeight;
+
+    const carrot = this.carrots.get(sprite.x, y, 'carrot');
+
+    this.add.existing(carrot);
+
+    carrot.body.setSize(carrot.width, carrot.height);
+
+    return carrot;
   }
 }
