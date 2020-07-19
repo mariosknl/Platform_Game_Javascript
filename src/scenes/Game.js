@@ -17,6 +17,10 @@ export default class Game extends Phaser.Scene {
     this.load.image('platform', '../src/assets/ground_grass.png');
     this.load.image('bunny-stand', '../src/assets/bunny1_stand.png');
     this.load.image('carrot', '../src/assets/carrot.png');
+    this.load.image('bunny-jump', '../src/assets/bunny1_jump.png');
+    this.load.audio('jump', 'src/assets/audio/footstep_grass_001.mp3');
+    this.load.audio('death', 'src/assets/audio/death.mp3');
+
     this.cursors = this.input.keyboard.createCursorKeys();
   }
 
@@ -96,6 +100,12 @@ export default class Game extends Phaser.Scene {
 
     if (touchingDown) {
       this.player.setVelocityY(-300);
+      this.player.setTexture('bunny-jump');
+      this.sound.play('jump');
+    }
+    const vy = this.player.body.velocity.y;
+    if (vy > 0 && this.player.texture.key !== 'bunny-stand') {
+      this.player.setTexture('bunny-stand');
     }
     if (this.cursors.left.isDown && !touchingDown) {
       this.player.setVelocityX(-200);
@@ -110,6 +120,7 @@ export default class Game extends Phaser.Scene {
     const bottomPlatform = this.findBottomMostPlatform();
     if (this.player.y > bottomPlatform.y + 200) {
       this.scene.start('game-over');
+      this.sound.play('death');
     }
   }
 
