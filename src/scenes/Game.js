@@ -43,6 +43,8 @@ export default class Game extends Phaser.Scene {
     this.player.body.checkCollision.right = false;
 
     this.cameras.main.startFollow(this.player);
+
+    this.cameras.main.setDeadzone(this.scale.width * 1.5);
   }
 
   update(t, dt) {
