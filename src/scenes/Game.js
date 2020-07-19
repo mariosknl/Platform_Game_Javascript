@@ -4,6 +4,7 @@ import Carrot from '../game/Carrot';
 export default class Game extends Phaser.Scene {
   constructor() {
     super('game');
+    this.carrotsCollected = 0;
   }
 
   preload() {
@@ -58,7 +59,7 @@ export default class Game extends Phaser.Scene {
     );
 
     const style = { color: '#000', fontSize: 24 };
-    this.add.text(240, 10, 'Carrots: 0', style)
+    this.carrotsCollectedText = this.add.text(240, 10, 'Carrots: 0', style)
       .setScrollFactor(0)
       .setOrigin(0.5, 0);
   }
@@ -136,5 +137,8 @@ export default class Game extends Phaser.Scene {
     this.physics.world.disableBody(carrot.body);
 
     this.carrotsCollected += 1;
+
+    const value = `Carrots: ${this.carrotsCollected}`;
+    this.carrotsCollectedText.text = value;
   }
 }
