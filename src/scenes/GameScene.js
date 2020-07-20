@@ -23,6 +23,8 @@ export default class GameScene extends Phaser.Scene {
     this.load.image('zombie2', '../src/assets/zombie_cheer2.png');
     this.load.audio('jump', '../src/assets/audio/footstep_grass_001.mp3');
     this.load.audio('death', '../src/assets/audio/death.mp3');
+    this.load.audio('killHim', '../src/assets/audio/kill_him.mp3');
+    this.load.audio('killHer', '../src/assets/audio/kill_her.mp3');
 
     this.cursors = this.input.keyboard.createCursorKeys();
   }
@@ -159,6 +161,11 @@ export default class GameScene extends Phaser.Scene {
 
   handleCollectHumans(player, human) {
     this.humans.killAndHide(human);
+    if (this.humansCollected % 3 === 0) {
+      this.sound.play('killHim');
+    } else if (this.humansCollected % 4 === 0) {
+      this.sound.play('killHer');
+    }
 
     this.physics.world.disableBody(human.body);
 
