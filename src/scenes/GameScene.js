@@ -25,12 +25,13 @@ export default class GameScene extends Phaser.Scene {
     this.load.audio('death', '../src/assets/audio/death.mp3');
     this.load.audio('killHim', '../src/assets/audio/kill_him.mp3');
     this.load.audio('killHer', '../src/assets/audio/kill_her.mp3');
+    this.load.audio('loser', '../src/assets/audio/loser.mp3');
 
     this.cursors = this.input.keyboard.createCursorKeys();
   }
 
   create() {
-    this.add.image(400, 300, 'background').setScrollFactor(1, 0);
+    this.add.image(800, 600, 'background').setScrollFactor(1, 0);
 
     this.platforms = this.physics.add.staticGroup();
 
@@ -128,6 +129,7 @@ export default class GameScene extends Phaser.Scene {
     if (this.player.y > bottomPlatform.y + 200) {
       this.scene.start('game-over');
       this.sound.play('death');
+      this.sound.play('loser');
     }
   }
 
