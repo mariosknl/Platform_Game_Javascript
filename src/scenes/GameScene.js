@@ -20,6 +20,7 @@ export default class GameScene extends Phaser.Scene {
     this.load.image('bunny-jump', '../src/assets/bunny1_jump.png');
     this.load.audio('jump', '../src/assets/audio/footstep_grass_001.mp3');
     this.load.audio('death', '../src/assets/audio/death.mp3');
+    this.load.audio('intro_music', ['../src/assets/ui/intro.mp3']);
 
     this.cursors = this.input.keyboard.createCursorKeys();
   }

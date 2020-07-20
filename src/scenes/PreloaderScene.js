@@ -93,11 +93,11 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('logo', '../src/assets/logo.png');
     this.load.image('check', '../src/assets/ui/check.png');
     this.load.image('check2', '../src/assets/ui/check2.png');
-    this.load.audio('intro_music', ['../src/assets/ui/intro.mp3']);
+    this.load.audio('bgMusic', '../src/assets/ui/intro.mp3');
   }
 
   ready() {
-    this.scene.start('Title');
+    this.scene.start('Options');
     this.readyCount += 1;
     if (this.readyCount === 2) {
       this.scene.start('Options');

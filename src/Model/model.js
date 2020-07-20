@@ -1,8 +1,9 @@
+/* eslint-disable no-underscore-dangle */
 export default class Model {
   constructor() {
     this._soundOn = true;
     this._musicOn = true;
-    this._bgMusic = false;
+    this._bgMusicPlaying = false;
   }
 
   set musicOn(value) {
@@ -21,11 +22,11 @@ export default class Model {
     return this._soundOn;
   }
 
-  set bgMusic(value) {
-    this._bgMusic = value;
+  set bgMusicPlaying(value) {
+    this._bgMusicPlaying = value;
   }
 
-  get bgMusicPlay() {
-    return this._bgMusic;
+  get bgMusicPlaying() {
+    return this._bgMusicPlaying;
   }
 }
