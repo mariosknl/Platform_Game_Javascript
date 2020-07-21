@@ -11,11 +11,14 @@ import GameOver from './scenes/GameOver';
 import Model from './Model/model';
 import background from './Objects/background';
 import Dialogue from './scenes/Dialogue';
+import api from './config/apiconf';
 
 class Game extends Phaser.Game {
   constructor() {
     super(config);
-
+    // api.postScore('John Doe', 1);
+    // api.getScore();
+    // api.postScore('Maria Doe', 2);
     const model = new Model();
     this.globals = { model, bgMusic: null };
     this.scene.add('Boot', Bootscene);
