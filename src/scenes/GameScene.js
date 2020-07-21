@@ -4,13 +4,27 @@ import Phaser from 'phaser';
 import Human from '../Objects/Human';
 
 export default class GameScene extends Phaser.Scene {
-  constructor() {
-    super('Game');
+  constructor(scene, background, enemy, nextScene, selfScale = 1) {
+    super(scene);
+    this.scene = scene;
+    this.enemy = enemy;
+    this.selfScale = selfScale;
+    this.background = background;
+    this.nextScene = nextScene;
     this.humansCollected = 0;
-  }
-
-  init() {
-    this.humansCollected = 0;
+    this.gameOptions = {
+      platformSpeedRange: [100, 100],
+      // space between the rightside platforms
+      spawnRange: [80, 100],
+      // platforms size
+      platformSizeRange: [100, 300],
+      // height between rightside platform and next platform
+      platformHeightRange: [-5, 5],
+      // a scale to be multiplied by platformHeightRange
+      platoformHeighScale: 20,
+      // platform max && min height
+      platformVerticalLimit: [0.4, 0.8],
+    };
   }
 
   preload() {
@@ -18,7 +32,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-    this.add.image(400, 200, 'background').setScrollFactor(1, 0);
+    this.add.image(400, 200, this.background).setScrollFactor(1, 0);
 
     this.platforms = this.physics.add.staticGroup();
 
@@ -61,7 +75,7 @@ export default class GameScene extends Phaser.Scene {
     );
 
     const style = { color: '#fff', fontSize: '24px' };
-    this.humansCollectedText = this.add.text(240, 10, 'Humans Eaten: 0', style)
+    this.humansCollectedText = this.add.text(240, 10, 'Humans Slaughtered: 0', style)
       .setScrollFactor(0)
       .setOrigin(0.5, 0);
   }
