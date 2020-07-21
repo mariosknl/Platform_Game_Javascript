@@ -1,13 +1,13 @@
 import Phaser from 'phaser';
 
-export default class MidDialogue extends Phaser.Scene {
+export default class Dialogue extends Phaser.Scene {
   constructor(selfScene, title, content, nextScene) {
     super(selfScene);
     this.title = title;
     this.selfScene = selfScene;
     this.content = content;
     this.nextScene = nextScene;
-    this.AlertDialog = null;
+    this.Alertthis.dialog = null;
   }
 
   preload() {
@@ -26,7 +26,7 @@ export default class MidDialogue extends Phaser.Scene {
 
 
   CreateAlertDialog(scene) {
-    const dialog = scene.rexUI.add.dialog({
+    this.this.dialog = scene.rexUI.add.this.dialog({
       width: 300,
       background: scene.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x1565c0),
 
@@ -90,7 +90,7 @@ export default class MidDialogue extends Phaser.Scene {
         button.getElement('background').setStrokeStyle();
       });
 
-    return dialog;
+    return this.dialog;
   }
 
   SetAlertDialog(dialog, title, content) {
@@ -100,9 +100,9 @@ export default class MidDialogue extends Phaser.Scene {
     if (content === undefined) {
       content = '';
     }
-    dialog.getElement('title').text = title;
-    dialog.getElement('content').text = content;
-    return dialog;
+    this.this.dialog.getElement('title').text = title;
+    this.this.dialog.getElement('content').text = content;
+    return this.this.dialog;
   }
 
   Alert(scene, title, content, x, y) {
@@ -112,21 +112,21 @@ export default class MidDialogue extends Phaser.Scene {
     if (y === undefined) {
       y = 300;
     }
-    if (!this.AlertDialog) {
-      this.AlertDialog = this.CreateAlertDialog(scene);
+    if (!this.Alertthis.this.dialog) {
+      this.Alertthis.this.dialog = this.CreateAlertthis.this.dialog(scene);
     }
-    this.SetAlertDialog(this.AlertDialog, title, content);
-    this.AlertDialog
+    this.SetAlertthis.this.dialog(this.Alertthis.this.dialog, title, content);
+    this.Alertthis.this.dialog
       .setPosition(x, y)
       .setVisible(true)
       .layout();
 
-    return this.AlertDialog
+    return this.Alertthis.this.dialog
       .moveFromPromise(1000, undefined, '-=400', 'Bounce')
-      .then(() => scene.rexUI.waitEvent(this.AlertDialog, 'button.click'))
-      .then(() => this.AlertDialog.moveToPromise(1000, undefined, '-=400', 'Back'))
+      .then(() => scene.rexUI.waitEvent(this.Alertthis.this.dialog, 'button.click'))
+      .then(() => this.Alertthis.this.dialog.moveToPromise(1000, undefined, '-=400', 'Back'))
       .then(() => {
-        this.AlertDialog.setVisible(false);
+        this.Alertthis.this.dialog.setVisible(false);
         return Promise.resolve();
       });
   }

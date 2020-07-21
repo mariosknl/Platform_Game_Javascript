@@ -12,19 +12,19 @@ export default class GameScene extends Phaser.Scene {
     this.background = background;
     this.nextScene = nextScene;
     this.humansCollected = 0;
-    this.gameOptions = {
-      platformSpeedRange: [100, 100],
-      // space between the rightside platforms
-      spawnRange: [80, 100],
-      // platforms size
-      platformSizeRange: [100, 300],
-      // height between rightside platform and next platform
-      platformHeightRange: [-5, 5],
-      // a scale to be multiplied by platformHeightRange
-      platoformHeighScale: 20,
-      // platform max && min height
-      platformVerticalLimit: [0.4, 0.8],
-    };
+    // this.gameOptions = {
+    //   platformSpeedRange: [100, 100],
+    //   // space between the rightside platforms
+    //   spawnRange: [80, 100],
+    //   // platforms size
+    //   platformSizeRange: [100, 300],
+    //   // height between rightside platform and next platform
+    //   platformHeightRange: [-5, 5],
+    //   // a scale to be multiplied by platformHeightRange
+    //   platoformHeighScale: 20,
+    //   // platform max && min height
+    //   platformVerticalLimit: [0.4, 0.8],
+    // };
   }
 
   preload() {

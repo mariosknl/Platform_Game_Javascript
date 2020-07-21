@@ -10,6 +10,7 @@ import CreditsScene from './scenes/CreditsScene';
 import GameOver from './scenes/GameOver';
 import Model from './Model/model';
 import background from './Objects/background';
+import Dialogue from './scenes/Dialogue';
 
 class Game extends Phaser.Game {
   constructor() {

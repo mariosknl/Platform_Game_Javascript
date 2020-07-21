@@ -4,7 +4,7 @@
   "description": "Platform Game created in Javascript using Phaser framework",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && webpack-dev-server --port=8000",
+    "start": "npm run build && webpack-dev-server --port=3000",
     "build": "webpack",
     "test": "jest"
   },
