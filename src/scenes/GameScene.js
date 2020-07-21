@@ -14,24 +14,11 @@ export default class GameScene extends Phaser.Scene {
   }
 
   preload() {
-    // load images
-    this.load.image('logo', '../src/assets/logo.png');
-    this.load.image('background', '../src/assets/background.jpg');
-    this.load.image('platform', '../src/assets/ground_grass.png');
-    this.load.image('zombie', '../src/assets/zombie_cheer1.png');
-    this.load.image('human', '../src/assets/soldier_walk1.png');
-    this.load.image('zombie2', '../src/assets/zombie_cheer2.png');
-    this.load.audio('jump', '../src/assets/audio/footstep_grass_001.mp3');
-    this.load.audio('death', '../src/assets/audio/death.mp3');
-    this.load.audio('killHim', '../src/assets/audio/kill_him.mp3');
-    this.load.audio('killHer', '../src/assets/audio/kill_her.mp3');
-    this.load.audio('loser', '../src/assets/audio/loser.mp3');
-
     this.cursors = this.input.keyboard.createCursorKeys();
   }
 
   create() {
-    this.add.image(800, 600, 'background').setScrollFactor(1, 0);
+    this.add.image(400, 200, 'background').setScrollFactor(1, 0);
 
     this.platforms = this.physics.add.staticGroup();
 
@@ -163,10 +150,8 @@ export default class GameScene extends Phaser.Scene {
 
   handleCollectHumans(player, human) {
     this.humans.killAndHide(human);
-    if (this.humansCollected % 3 === 0) {
+    if (this.humansCollected % 4 === 0) {
       this.sound.play('killHim');
-    } else if (this.humansCollected % 4 === 0) {
-      this.sound.play('killHer');
     }
 
     this.physics.world.disableBody(human.body);

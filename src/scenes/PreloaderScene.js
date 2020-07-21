@@ -5,21 +5,13 @@ export default class PreloaderScene extends Phaser.Scene {
     super('Preloader');
   }
 
-  init() {
-    this.readyCount = 0;
-  }
+  // init() {
+  //   this.readyCount = 0;
+  // }
 
   preload() {
     // add logo image
     this.add.image(400, 200, 'logo');
-    // this.load.image('background', '../src/assets/bg_layer1.png');
-    // this.load.image('platform', '../src/assets/ground_grass.png');
-    // this.load.image('bunny-stand', '../src/assets/bunny1_stand.png');
-    // this.load.image('carrot', '../src/assets/carrot.png');
-    // this.load.image('bunny-jump', '../src/assets/bunny1_jump.png');
-    // this.load.audio('jump', 'src/assets/audio/footstep_grass_001.mp3');
-    // this.load.audio('death', 'src/assets/audio/death.mp3');
-    // this.cursors = this.input.keyboard.createCursorKeys();
 
     // display progress bar
     const progressBar = this.add.graphics();
@@ -93,14 +85,21 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('logo', '../src/assets/logo.png');
     this.load.image('check', '../src/assets/ui/check.png');
     this.load.image('check2', '../src/assets/ui/check2.png');
-    this.load.audio('bgMusic', '../src/assets/ui/intro.mp3');
+    this.load.image('background', '../src/assets/background.jpg');
+    this.load.image('platform', '../src/assets/ground_grass.png');
+    this.load.image('zombie', '../src/assets/zombie_cheer1.png');
+    this.load.image('zombie2', '../src/assets/zombie_cheer2.png');
+    this.load.audio('bgMusic', '../src/assets/audio/intro.mp3');
+    this.load.audio('jump', '../src/assets/audio/footstep_grass_001.mp3');
+    this.load.audio('death', '../src/assets/audio/death.mp3');
+    this.load.audio('killHim', '../src/assets/audio/kill_him.mp3');
+    this.load.audio('loser', '../src/assets/audio/loser.mp3');
+    this.load.image('human', '../src/assets/soldier_walk1.png');
+
+    this.cursors = this.input.keyboard.createCursorKeys();
   }
 
-  ready() {
-    this.scene.start('Title');
-    this.readyCount += 1;
-    if (this.readyCount === 2) {
-      this.scene.start('Title');
-    }
+  update() {
+    this.scene.start('Intro');
   }
 }
