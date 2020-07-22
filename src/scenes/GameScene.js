@@ -90,7 +90,7 @@ export default class GameScene extends Phaser.Scene {
         start: 19,
         end: 22,
       }),
-      frameRate: 8,
+      frameRate: 4,
       repeat: -1,
     });
 
