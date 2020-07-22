@@ -1,0 +1,7 @@
+const dialog = [
+  ['You have managed to eat many HUMAN BEINGS so far... \nThere are lots of them as you are going up. \nThey are trying to stay away from your jaws... Even though, \nyou have to keep your reputation and vanish each one you see.\n Stay focused and be careful cause things are about to keep tougher now. Humans \nare cowards and they are putting women in front while males are locked inside their \ndungeons. On the other hand, spaces you shall ground are getting fewer and fewer. You can eat them ALL. \nI\'m sure no one can stop you... Let this be a massacre everyone will remember for ages'],
+  ['They say that however has the WILL, it also has the WAY and it seems you have both. I\'m it wasn\'t that hard for you to reach up here right? One last stop and you will the RULER of the world. Only a few have left for you to eat. Things are much tougher now but I don\'t feel like this will a problem for you. You are the ONE! Get higher and extinct the human race forever. Planet Earth will be a much better place for all of you. Can you do that? '],
+  ['You DID IIIIIIIIITTTTTTTTTTT!!!!!!!!!! \nYou are now the RULER OF THE WORLD. \nNo one will ever be against you. The human race disappeared from this planet\n and now you can live in peace with your race! A problem though appeared.\n What are you supposed to eat now? Is it possible \nthat there are remaining people which you haven\'t found yet? \nHuman race always finds a way to survive even though they don\'t seem to respect each other\'s lives...'],
+];
+
+export default { dialog };

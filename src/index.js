@@ -11,7 +11,9 @@ import GameOver from './scenes/GameOver';
 import Model from './Model/model';
 import background from './Objects/background';
 import Dialogue from './scenes/Dialogue';
+import story from './Objects/dialog';
 import api from './config/apiconf';
+
 
 class Game extends Phaser.Game {
   constructor() {
@@ -35,6 +37,10 @@ class Game extends Phaser.Game {
     this.scene.add('First', new GameScene('First', background.background[0], 'human', 'Dialog1'));
     this.scene.add('Second', new GameScene('Two', background.background[1], 'woman', 'Dialog2'));
     this.scene.add('Third', new GameScene('Third', background.background[2], 'human', 'Dialog3'));
+
+    this.scene.add('Dialog1', new Dialogue('Dialog1', story.dialog[0][0]));
+    this.scene.add('Dialog2', new Dialogue('Dialog2', story.dialog[0][1]));
+    this.scene.add('Dialog3', new Dialogue('Dialog3', story.dialog[0][2]));
 
     this.scene.add('GameOver', GameOver);
     this.scene.start('Boot');
