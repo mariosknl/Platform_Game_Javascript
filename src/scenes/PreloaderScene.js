@@ -105,7 +105,7 @@ export default class PreloaderScene extends Phaser.Scene {
       frameHeight: 110,
     });
 
-    this.load.spritesheet('female', '../src/assets/female_tilesheet.png', {
+    this.load.spritesheet('woman', '../src/assets/female_tilesheet.png', {
       frameWidth: 80,
       frameHeight: 110,
     });

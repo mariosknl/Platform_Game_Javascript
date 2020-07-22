@@ -26,9 +26,6 @@ class Game extends Phaser.Game {
     this.scene.add('Boot', Bootscene);
     this.scene.add('Preloader', PreloaderScene);
     this.scene.add('Title', TitleScene);
-    this.scene.add('Dialog1', new Dialogue('Dialog1', '', 'content', 'Two'));
-    this.scene.add('Dialog2', new Dialogue('Dialog2', '', 'content', 'Third'));
-    this.scene.add('Dialog3', new Dialogue('Dialog3', '', 'content', 'rexUI'));
     this.scene.add('Options', OptionsScene);
     this.scene.add('Credits', CreditsScene);
     this.scene.add('Game', GameScene);
@@ -38,9 +35,9 @@ class Game extends Phaser.Game {
     this.scene.add('Second', new GameScene('Two', background.background[1], 'woman', 'Dialog2'));
     this.scene.add('Third', new GameScene('Third', background.background[2], 'human', 'Dialog3'));
 
-    this.scene.add('Dialog1', new Dialogue('Dialog1', story.dialog[0][0]));
-    this.scene.add('Dialog2', new Dialogue('Dialog2', story.dialog[0][1]));
-    this.scene.add('Dialog3', new Dialogue('Dialog3', story.dialog[0][2]));
+    this.scene.add('Dialog1', new Dialogue('Dialog1', story.dialog[0][0], '', 'Two'));
+    this.scene.add('Dialog2', new Dialogue('Dialog2', story.dialog[0][1], '', 'Third'));
+    this.scene.add('Dialog3', new Dialogue('Dialog3', story.dialog[0][2], '', 'rexUI'));
 
     this.scene.add('GameOver', GameOver);
     this.scene.start('Boot');

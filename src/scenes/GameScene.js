@@ -150,7 +150,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.horizontalWrap(this.player);
 
-    this.changeScene();
+    // this.changeScene();
 
     const bottomPlatform = this.findBottomMostPlatform();
     if (this.player.y > bottomPlatform.y + 200) {
@@ -217,9 +217,11 @@ export default class GameScene extends Phaser.Scene {
     return bottomPlatform;
   }
 
-  changeScene() {
-    if (this.humansCollected === 2) {
-      this.scene.start('Two');
-    }
-  }
+  // changeScene() {
+  //   if (this.humansCollected === 50) {
+  //     this.scene.start('Dialog2');
+  //   } else if (this.humansCollected === 2) {
+  //     this.scene.start('Dialog1');
+  //   }
+  // }
 }

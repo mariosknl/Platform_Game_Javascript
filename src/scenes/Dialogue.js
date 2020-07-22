@@ -7,7 +7,7 @@ export default class Dialogue extends Phaser.Scene {
     this.selfScene = selfScene;
     this.content = content;
     this.nextScene = nextScene;
-    this.Alert = null;
+    this.AlertDialog = null;
   }
 
   preload() {
@@ -112,10 +112,10 @@ export default class Dialogue extends Phaser.Scene {
     if (y === undefined) {
       y = 300;
     }
-    if (!this.Alertthis.this.dialog) {
+    if (!this.Alert.dialog) {
       this.AlertDialog = this.CreateAlertDialog(scene);
     }
-    this.SetAlerttDialog(this.AlertDialog, title, content);
+    this.SetAlertDialog(this.AlertDialog, title, content);
     this.AlertDialog
       .setPosition(x, y)
       .setVisible(true)
