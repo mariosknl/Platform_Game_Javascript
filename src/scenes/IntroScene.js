@@ -8,7 +8,7 @@ export default class IntroScene extends Phaser.Scene {
   create() {
     this.cameras.main.setBackgroundColor('#9631AB');
     this.introText = this.add.text(200, 0, 'Introduction', { fontSize: '34px', fill: '#fff' });
-    this.createdByText = this.add.text(200, 0, 'In year 2038, science made one more mistake. \n After trying to create a medicine to heal humanity\'s worst enemy, called Virus-8493, \n one explosion was enough to spread the germ and infect thousands of people. Nowadays, infected people are walking around \n like living-dead creatures, ready to conquer the world \n and extinct human race. They have managed to declare a some kind of chief among them who cannot \n fill his hunger of human flesh. His name is Slaughter King and he will try his best so there wont be any HUMAN left on planet Earth....', { fontSize: '20px', fill: '#fff', align: 'center' });
+    this.createdByText = this.add.text(200, 0, 'In year 2038,\nscience made one more mistake. \n After trying to create a medicine to heal humanity\'s worst enemy,\ncalled Virus-8493, \n one explosion was enough to\nspread the germ and infect thousands of people.\nNowadays, infected people are walking around \n like living-dead creatures, ready to conquer the world \n and extinct human race.\nThey have managed to declare a some kind of\ncaptain among them who cannot \n fill his hunger of human flesh.\nHis name is Slaughter King\nand he will try his best\nso there wont be any HUMAN left on planet Earth....', { fontSize: '20px', fill: '#fff', align: 'center' });
     this.zone = this.add.zone(400, 300, 800, 600);
 
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);

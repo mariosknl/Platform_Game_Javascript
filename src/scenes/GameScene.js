@@ -5,11 +5,10 @@ import Human from '../Objects/Human';
 import gameOpt from '../config/gameOptions';
 
 export default class GameScene extends Phaser.Scene {
-  constructor(scene, background, enemy, nextScene, selfScale = 1) {
+  constructor(scene, background, enemy, nextScene) {
     super(scene);
     this.selfScene = scene;
     this.enemy = enemy;
-    this.selfScale = selfScale;
     this.background = background;
     this.nextScene = nextScene;
   }
@@ -45,7 +44,7 @@ export default class GameScene extends Phaser.Scene {
       }
     } else if (gameOpt.gameOptions.currentScene === 2) {
       for (let i = 0; i < 5; i++) {
-        const x = Phaser.Math.Between(50, 350);
+        const x = Phaser.Math.Between(50, 450);
         const y = 150 * i;
 
         const platform = this.platforms.create(x, y, 'platform2');
@@ -56,7 +55,7 @@ export default class GameScene extends Phaser.Scene {
       }
     } else if (gameOpt.gameOptions.currentScene === 3) {
       for (let i = 0; i < 5; i++) {
-        const x = Phaser.Math.Between(200, 500);
+        const x = Phaser.Math.Between(150, 500);
         const y = 150 * i;
         const platform = this.platforms.create(x, y, 'platform3');
         platform.scale = 0.5;
@@ -145,7 +144,7 @@ export default class GameScene extends Phaser.Scene {
         const human = child;
 
         const { scrollY } = this.cameras.main;
-        if (human.y >= scrollY + 700) {
+        if (human.y >= scrollY + 800) {
           human.y = scrollY - Phaser.Math.Between(50, 100);
           human.body.updateFromGameObject();
         }
@@ -159,10 +158,10 @@ export default class GameScene extends Phaser.Scene {
       this.sound.play('jump');
     }
 
-    const vy = this.player.body.velocity.y;
-    if (vy > 0 && this.player.texture.key !== 'zombie') {
-      this.player.setTexture('zombie');
-    }
+    // const vy = this.player.body.velocity.y;
+    // if (vy > 0 && this.player.texture.key !== 'zombie') {
+    //   this.player.setTexture('zombie');
+    // }
 
     if (this.cursors.left.isDown && !touchingDown) {
       this.player.setVelocityX(-200);

@@ -28,12 +28,13 @@ export default class Dialogue extends Phaser.Scene {
   CreateAlertDialog(scene) {
     this.dialog = scene.rexUI.add.dialog({
       width: 300,
-      background: scene.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x1565c0),
+      background: scene.rexUI.add.roundRectangle(50, 50, 100, 100, 20, 0x264653),
 
       title: scene.rexUI.add.label({
-        background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x003c8f),
+        background: scene.rexUI.add.roundRectangle(50, 50, 100, 40, 20, 0x2a9d8f),
         text: scene.add.text(0, 0, '', {
-          fontSize: '24px',
+          fontSize: '22px',
+          align: 'center',
         }),
         space: {
           left: 15,
@@ -44,12 +45,13 @@ export default class Dialogue extends Phaser.Scene {
       }),
 
       content: scene.add.text(0, 0, '', {
-        fontSize: '24px',
+        fontSize: '20px',
+        align: 'center',
       }),
 
       actions: [
         scene.rexUI.add.label({
-          background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 20, 0x5e92f3),
+          background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 20, 0xf4a261),
 
           text: scene.add.text(0, 0, 'OK', {
             fontSize: '24px',
@@ -83,10 +85,10 @@ export default class Dialogue extends Phaser.Scene {
         content: false,
       },
     })
-      .on('button.over', (button, groupName, index, pointer, event) => {
+      .on('button.over', (button) => {
         button.getElement('background').setStrokeStyle(1, 0xffffff);
       })
-      .on('button.out', (button, groupName, index, pointer, event) => {
+      .on('button.out', (button) => {
         button.getElement('background').setStrokeStyle();
       });
 

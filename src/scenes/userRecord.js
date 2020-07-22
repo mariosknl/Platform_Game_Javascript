@@ -1,4 +1,6 @@
 import Phaser from 'phaser';
+import api from '../config/apiconf';
+import gameOpt from '../config/gameOptions';
 
 export default class userRecord extends Phaser.Scene {
   constructor() {
