@@ -5,27 +5,31 @@ import Human from '../Objects/Human';
 import gameOpt from '../config/gameOptions';
 
 export default class GameScene extends Phaser.Scene {
-  constructor(scene, background, enemy, nextScene, selfScale = 1) {
+  constructor(scene, background, enemy, speedIncrease, nextScene, selfScale = 1) {
     super(scene);
     this.selfScene = scene;
     this.enemy = enemy;
     this.selfScale = selfScale;
     this.background = background;
+    this.speedIncrease = speedIncrease;
     this.nextScene = nextScene;
-    this.humansCollected = 0;
-    // this.gameOptions = {
-    //   platformSpeedRange: [100, 100],
-    //   // space between the rightside platforms
-    //   spawnRange: [80, 100],
-    //   // platforms size
-    //   platformSizeRange: [100, 300],
-    //   // height between rightside platform and next platform
-    //   platformHeightRange: [-5, 5],
-    //   // a scale to be multiplied by platformHeightRange
-    //   platoformHeighScale: 20,
-    //   // platform max && min height
-    //   platformVerticalLimit: [0.4, 0.8],
-    // };
+    this.sceneOptions = {
+      platformSpeedRange: [this.speedIncrease, this.speedIncrease],
+      // space between the rightside platforms
+      spawnRange: [80, 100],
+      // platforms size
+      platformSizeRange: [100, 300],
+      // height between rightside platform and next platform
+      platformHeightRange: [-5, 5],
+      // a scale to be multiplied by platformHeightRange
+      platoformHeighScale: 20,
+      // platform max && min height
+      platformVerticalLimit: [0.4, 0.8],
+      // humans appearing in %
+      humanPercent: 80,
+      // women appearing in %
+      womanPercent: 75,
+    };
   }
 
   preload() {
@@ -33,7 +37,17 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-    this.add.image(800, 600, this.background).setScrollFactor(1, 0);
+    if (this.selfScene === 'First') {
+      gameOpt.gameOptions.currentScene = 1;
+      this.speedIncrease = gameOpt.gameOptions.firstSceneSpeed;
+    } else if (this.selfScene === 'Second') {
+      gameOpt.gameOptions.currentScene = 2;
+      this.speedIncrease = gameOpt.gameOptions.secondSceneSpeed;
+    } else {
+      gameOpt.gameOptions.currentScene = 3;
+      this.speedIncrease = gameOpt.gameOptions.thirdSceneSpeed;
+    }
+    // this.add.image(800, 600, this.background).setScrollFactor(1, 0);
 
     this.platforms = this.physics.add.staticGroup();
 
@@ -223,10 +237,12 @@ export default class GameScene extends Phaser.Scene {
   }
 
   changeScene() {
-    if (gameOpt.gameOptions.score === 4 && this.selfScene === 'Second') {
-      this.scene.start('Dialog2');
-    } else if (gameOpt.gameOptions.score === 2 && this.selfScene === 'First') {
+    if (gameOpt.gameOptions.score === 2 && this.selfScene === 'First') {
       this.scene.start('Dialog1');
+    } else if (gameOpt.gameOptions.score === 4 && this.selfScene === 'Second') {
+      this.scene.start('Dialog2');
+    } else if (gameOpt.gameOptions.score === 5 && this.selfScene === 'Third') {
+      this.scene.start('rexUI');
     }
   }
 }
