@@ -2,11 +2,12 @@
 /* eslint-disable no-plusplus */
 import Phaser from 'phaser';
 import Human from '../Objects/Human';
+import gameOpt from '../config/gameOptions';
 
 export default class GameScene extends Phaser.Scene {
   constructor(scene, background, enemy, nextScene, selfScale = 1) {
     super(scene);
-    this.scene = scene;
+    this.selfScene = scene;
     this.enemy = enemy;
     this.selfScale = selfScale;
     this.background = background;
@@ -32,7 +33,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-    this.add.image(400, 200, this.background).setScrollFactor(1, 0);
+    this.add.image(800, 600, this.background).setScrollFactor(1, 0);
 
     this.platforms = this.physics.add.staticGroup();
 
@@ -55,7 +56,7 @@ export default class GameScene extends Phaser.Scene {
         start: 8,
         end: 10,
       }),
-      frameRate: 8,
+      frameRate: 6,
       repeat: -1,
     });
 
@@ -72,7 +73,7 @@ export default class GameScene extends Phaser.Scene {
     this.humans = this.physics.add.group({
       classType: Human,
     });
-    this.humans.get(240, 320, 'human');
+    this.humans.get(240, 0, 'human');
 
     this.anims.create({
       key: 'move',
@@ -86,7 +87,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.anims.create({
       key: 'fMove',
-      frames: this.anims.generateFrameNumbers('female', {
+      frames: this.anims.generateFrameNumbers('woman', {
         start: 19,
         end: 22,
       }),
@@ -105,7 +106,7 @@ export default class GameScene extends Phaser.Scene {
     );
 
     const style = { color: '#fff', fontSize: '24px' };
-    this.humansCollectedText = this.add.text(240, 10, 'Humans Slaughtered: 0', style)
+    this.humansCollectedText = this.add.text(240, 10, `Humans Slaughtered: ${gameOpt.gameOptions.score}`, style)
       .setScrollFactor(0)
       .setOrigin(0.5, 0);
   }
@@ -138,6 +139,11 @@ export default class GameScene extends Phaser.Scene {
       this.player.setVelocityY(-300);
       this.player.anims.play('jump');
       this.sound.play('jump');
+    }
+
+    const vy = this.player.body.velocity.y;
+    if (vy > 0 && this.player.texture.key !== 'zombie') {
+      this.player.setTexture('zombie');
     }
 
     if (this.cursors.left.isDown && !touchingDown) {
@@ -190,16 +196,15 @@ export default class GameScene extends Phaser.Scene {
 
   handleCollectHumans(player, human) {
     this.humans.killAndHide(human);
-    if (this.humansCollected % 4 === 0) {
+    if (gameOpt.gameOptions.score % 4 === 0) {
       this.sound.play('killHim');
     }
 
     this.physics.world.disableBody(human.body);
 
-    const value = `Humans Eaten: ${this.humansCollected}`;
+    gameOpt.gameOptions.score += 1;
+    const value = `Humans Slaughtered: ${gameOpt.gameOptions.score}`;
     this.humansCollectedText.text = value;
-
-    this.humansCollected += 1;
   }
 
   findBottomMostPlatform() {
@@ -218,12 +223,10 @@ export default class GameScene extends Phaser.Scene {
   }
 
   changeScene() {
-    if (this.humansCollectedText === 4) {
+    if (gameOpt.gameOptions.score === 4 && this.selfScene === 'Second') {
       this.scene.start('Dialog2');
-      this.humansCollectedText = 3;
-    } else if (this.humansCollected === 2) {
+    } else if (gameOpt.gameOptions.score === 2 && this.selfScene === 'First') {
       this.scene.start('Dialog1');
-      this.humansCollectedText = 2;
     }
   }
 }

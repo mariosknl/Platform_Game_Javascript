@@ -3,8 +3,8 @@ import Phaser from 'phaser';
 export default class Dialogue extends Phaser.Scene {
   constructor(selfScene, title, content, nextScene) {
     super(selfScene);
-    this.title = title;
     this.selfScene = selfScene;
+    this.title = title;
     this.content = content;
     this.nextScene = nextScene;
     this.AlertDialog = null;

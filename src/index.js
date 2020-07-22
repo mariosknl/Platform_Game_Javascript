@@ -35,9 +35,9 @@ class Game extends Phaser.Game {
     this.scene.add('Second', new GameScene('Second', background.background[1], 'woman', 'Dialog2'));
     this.scene.add('Third', new GameScene('Third', background.background[2], 'human', 'Dialog3'));
 
-    this.scene.add('Dialog1', new Dialogue('Dialog1', story.dialog[0][0], '', 'Second'));
-    this.scene.add('Dialog2', new Dialogue('Dialog2', story.dialog[0][1], '', 'Third'));
-    this.scene.add('Dialog3', new Dialogue('Dialog3', story.dialog[0][2], '', 'rexUI'));
+    this.scene.add('Dialog1', new Dialogue('Dialog1', '', story.dialog[0][0], 'Second'));
+    this.scene.add('Dialog2', new Dialogue('Dialog2', '', story.dialog[0][1], 'Third'));
+    this.scene.add('Dialog3', new Dialogue('Dialog3', '', story.dialog[0][2], '', 'rexUI'));
 
     this.scene.add('GameOver', GameOver);
     this.scene.start('Boot');
