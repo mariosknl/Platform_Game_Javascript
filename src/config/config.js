@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import RexUIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin';
 
 export default {
   type: Phaser.AUTO,
@@ -12,6 +13,18 @@ export default {
       gravity: {
         y: 200,
       },
+    },
+    dom: {
+      createContainer: true,
+    },
+    plugins: {
+      scene: [
+        {
+          key: 'rexUI',
+          plugin: RexUIPlugin,
+          mappring: 'rexUI',
+        },
+      ],
     },
   },
 };

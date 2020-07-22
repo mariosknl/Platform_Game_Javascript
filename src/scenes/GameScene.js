@@ -5,31 +5,13 @@ import Human from '../Objects/Human';
 import gameOpt from '../config/gameOptions';
 
 export default class GameScene extends Phaser.Scene {
-  constructor(scene, background, enemy, speedIncrease, nextScene, selfScale = 1) {
+  constructor(scene, background, enemy, nextScene, selfScale = 1) {
     super(scene);
     this.selfScene = scene;
     this.enemy = enemy;
     this.selfScale = selfScale;
     this.background = background;
-    this.speedIncrease = speedIncrease;
     this.nextScene = nextScene;
-    this.sceneOptions = {
-      platformSpeedRange: [this.speedIncrease, this.speedIncrease],
-      // space between the rightside platforms
-      spawnRange: [80, 100],
-      // platforms size
-      platformSizeRange: [100, 300],
-      // height between rightside platform and next platform
-      platformHeightRange: [-5, 5],
-      // a scale to be multiplied by platformHeightRange
-      platoformHeighScale: 20,
-      // platform max && min height
-      platformVerticalLimit: [0.4, 0.8],
-      // humans appearing in %
-      humanPercent: 80,
-      // women appearing in %
-      womanPercent: 75,
-    };
   }
 
   preload() {
@@ -47,19 +29,41 @@ export default class GameScene extends Phaser.Scene {
       gameOpt.gameOptions.currentScene = 3;
       this.speedIncrease = gameOpt.gameOptions.thirdSceneSpeed;
     }
-    // this.add.image(800, 600, this.background).setScrollFactor(1, 0);
+    this.add.image(800, 600, this.background).setScrollFactor(1, 0);
 
     this.platforms = this.physics.add.staticGroup();
+    if (gameOpt.gameOptions.currentScene === 1) {
+      for (let i = 0; i < 5; i++) {
+        const x = Phaser.Math.Between(80, 400);
+        const y = 150 * i;
 
-    for (let i = 0; i < 5; i++) {
-      const x = Phaser.Math.Between(80, 400);
-      const y = 150 * i;
+        const platform = this.platforms.create(x, y, 'platform');
+        platform.scale = 0.5;
 
-      const platform = this.platforms.create(x, y, 'platform');
-      platform.scale = 0.5;
+        const { body } = platform;
+        body.updateFromGameObject();
+      }
+    } else if (gameOpt.gameOptions.currentScene === 2) {
+      for (let i = 0; i < 5; i++) {
+        const x = Phaser.Math.Between(50, 350);
+        const y = 150 * i;
 
-      const { body } = platform;
-      body.updateFromGameObject();
+        const platform = this.platforms.create(x, y, 'platform2');
+        platform.scale = 0.5;
+
+        const { body } = platform;
+        body.updateFromGameObject();
+      }
+    } else if (gameOpt.gameOptions.currentScene === 3) {
+      for (let i = 0; i < 5; i++) {
+        const x = Phaser.Math.Between(200, 500);
+        const y = 150 * i;
+        const platform = this.platforms.create(x, y, 'platform3');
+        platform.scale = 0.5;
+
+        const { body } = platform;
+        body.updateFromGameObject();
+      }
     }
 
     this.player = this.physics.add.sprite(240, 320, 'zombie').setScale(0.5);
@@ -143,7 +147,7 @@ export default class GameScene extends Phaser.Scene {
         const { scrollY } = this.cameras.main;
         if (human.y >= scrollY + 700) {
           human.y = scrollY - Phaser.Math.Between(50, 100);
-          human.body.updateCenter();
+          human.body.updateFromGameObject();
         }
       });
     });
