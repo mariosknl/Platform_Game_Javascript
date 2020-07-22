@@ -150,6 +150,8 @@ export default class GameScene extends Phaser.Scene {
 
     this.horizontalWrap(this.player);
 
+    this.changeScene();
+
     const bottomPlatform = this.findBottomMostPlatform();
     if (this.player.y > bottomPlatform.y + 200) {
       this.scene.start('game-over');
@@ -213,5 +215,11 @@ export default class GameScene extends Phaser.Scene {
       bottomPlatform = platform;
     }
     return bottomPlatform;
+  }
+
+  changeScene() {
+    if (this.humansCollected === 2) {
+      this.scene.start('Two');
+    }
   }
 }
