@@ -89,28 +89,25 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('background2', '../src/assets/background2.jpg');
     this.load.image('background3', '../src/assets/background3.jpg');
     this.load.image('platform', '../src/assets/ground_grass.png');
-    // this.load.image('zombie', '../src/assets/zombie_cheer1.png');
-    // this.load.image('zombie2', '../src/assets/zombie_cheer2.png');
     this.load.audio('bgMusic', '../src/assets/audio/intro.mp3');
     this.load.audio('jump', '../src/assets/audio/footstep_grass_001.mp3');
     this.load.audio('death', '../src/assets/audio/death.mp3');
     this.load.audio('killHim', '../src/assets/audio/kill_him.mp3');
     this.load.audio('loser', '../src/assets/audio/loser.mp3');
-    // this.load.image('human', '../src/assets/soldier_walk1.png');
 
     this.load.spritesheet('zombie', '../src/assets/zombie_tilesheet.png', {
-      frameWidth: 70,
-      frameHeight: 105,
+      frameWidth: 80,
+      frameHeight: 110,
     });
 
     this.load.spritesheet('human', '../src/assets/player_tilesheet.png', {
-      frameWidth: 70,
-      frameHeight: 105,
+      frameWidth: 80,
+      frameHeight: 110,
     });
 
-    this.load.spritesheet('female_tilesheet', '../src/assets/female_tilesheet.png', {
-      frameWidth: 140,
-      frameHeight: 80,
+    this.load.spritesheet('female', '../src/assets/female_tilesheet.png', {
+      frameWidth: 80,
+      frameHeight: 110,
     });
   }
 

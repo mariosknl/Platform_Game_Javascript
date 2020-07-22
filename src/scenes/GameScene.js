@@ -49,6 +49,16 @@ export default class GameScene extends Phaser.Scene {
 
     this.player = this.physics.add.sprite(240, 320, 'zombie').setScale(0.5);
 
+    this.anims.create({
+      key: 'jump',
+      frames: this.anims.generateFrameNumbers('zombie', {
+        start: 8,
+        end: 10,
+      }),
+      frameRate: 8,
+      repeat: -1,
+    });
+
     this.physics.add.collider(this.platforms, this.player);
 
     this.player.body.checkCollision.up = false;
@@ -63,6 +73,26 @@ export default class GameScene extends Phaser.Scene {
       classType: Human,
     });
     this.humans.get(240, 320, 'human');
+
+    this.anims.create({
+      key: 'move',
+      frames: this.anims.generateFrameNumbers('human', {
+        start: 19,
+        end: 22,
+      }),
+      frameRate: 4,
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: 'fMove',
+      frames: this.anims.generateFrameNumbers('female', {
+        start: 19,
+        end: 22,
+      }),
+      frameRate: 8,
+      repeat: -1,
+    });
 
     this.physics.add.collider(this.platforms, this.humans);
 
@@ -102,18 +132,12 @@ export default class GameScene extends Phaser.Scene {
         }
       });
     });
-
     const touchingDown = this.player.body.touching.down;
 
     if (touchingDown) {
       this.player.setVelocityY(-300);
-      this.player.setTexture('zombie2');
+      this.player.anims.play('jump');
       this.sound.play('jump');
-    }
-
-    const vy = this.player.body.velocity.y;
-    if (vy > 0 && this.player.texture.key !== 'zombie') {
-      this.player.setTexture('zombie');
     }
 
     if (this.cursors.left.isDown && !touchingDown) {
@@ -152,7 +176,7 @@ export default class GameScene extends Phaser.Scene {
 
     human.setActive(true);
     human.setVisible(true);
-
+    human.anims.play('move');
     this.add.existing(human);
 
     human.body.setSize(human.width, human.height);

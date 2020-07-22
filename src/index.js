@@ -24,6 +24,9 @@ class Game extends Phaser.Game {
     this.scene.add('Boot', Bootscene);
     this.scene.add('Preloader', PreloaderScene);
     this.scene.add('Title', TitleScene);
+    this.scene.add('Dialog1', new Dialogue('Dialog1', '', 'content', 'Two'));
+    this.scene.add('Dialog2', new Dialogue('Dialog2', '', 'content', 'Third'));
+    this.scene.add('Dialog3', new Dialogue('Dialog3', '', 'content', 'rexUI'));
     this.scene.add('Options', OptionsScene);
     this.scene.add('Credits', CreditsScene);
     this.scene.add('Game', GameScene);
