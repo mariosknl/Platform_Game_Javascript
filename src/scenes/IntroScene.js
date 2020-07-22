@@ -34,9 +34,9 @@ export default class IntroScene extends Phaser.Scene {
 
     this.createdByTween = this.tweens.add({
       targets: this.createdByText,
-      y: -500,
-      duration: 6000,
-      delay: 1000,
+      y: -400,
+      duration: 8000,
+      delay: 2000,
       onComplete: (() => {
         this.scene.start('Title');
       }),
