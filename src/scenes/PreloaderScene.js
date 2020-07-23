@@ -86,6 +86,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('check', '../src/assets/ui/check.png');
     this.load.image('check2', '../src/assets/ui/check2.png');
     this.load.image('introBg', '../src/assets/bg/background.jpg');
+    this.load.image('bgTitle', '../src/assets/bg/bgTitle.jpg');
     this.load.image('background', '../src/assets/bg/background5.jpg');
     this.load.image('background2', '../src/assets/bg/background2.jpg');
     this.load.image('background3', '../src/assets/bg/background3.jpg');
