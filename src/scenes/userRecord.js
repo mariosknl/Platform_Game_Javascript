@@ -34,7 +34,7 @@ export default class userRecord extends Phaser.Scene {
       .setOrigin(0.5)
       .setInteractive()
       .on('pointerdown', () => {
-        console.log(printText);
+        // console.log(this.plugins.get('rextexteditplugin').edit(printText));
         this.count = 0;
         this.plugins.get('rextexteditplugin').edit(printText);
         keyObj.on('down', () => {

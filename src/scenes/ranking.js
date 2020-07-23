@@ -17,11 +17,13 @@ export default class Ranking extends Phaser.Scene {
     this.count = 0;
     this.position = 130;
     this.sortScore = this.score.result.sort((a, b) => (a.score > b.score ? -1 : 1));
-    this.sortScore.foreEach((res) => {
+    this.sortScore.forEach((res) => {
       this.count += 1;
-      const st = this.count === 1 ? 'ST' : 'ND';
-      this.add.text(100, this.position, `${this.count}${st} ${res.score} %{result.user}`).setTint(0xff0000);
-      this.position += 25;
+      if (this.count < 10) {
+        const st = this.count === 1 ? 'ST' : 'ND';
+        this.add.text(100, this.position, `${this.count}${st} ${res.score} ${res.user}`).setTint(0xff0000);
+        this.position += 25;
+      }
     });
 
     this.menuBtn = new Button(this, config.width / 2, config.height / 2, +100, 'grey_button1', 'grey_button2', 'Menu', 'Title');

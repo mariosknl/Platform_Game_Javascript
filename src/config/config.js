@@ -14,17 +14,17 @@ export default {
         y: 200,
       },
     },
-    dom: {
-      createContainer: true,
-    },
-    plugins: {
-      scene: [
-        {
-          key: 'rexUI',
-          plugin: RexUIPlugin,
-          mappring: 'rexUI',
-        },
-      ],
-    },
+  },
+  dom: {
+    createContainer: true,
+  },
+  plugins: {
+    scene: [
+      {
+        key: 'rexUI',
+        plugin: RexUIPlugin,
+        mapping: 'rexUI',
+      },
+    ],
   },
 };
