@@ -3,7 +3,7 @@ import RexUIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin';
 
 export default {
   type: Phaser.AUTO,
-  parent: 'phaser-game',
+  parent: 'phaser-example',
   width: 800,
   height: 600,
   autoCenter: Phaser.Scale.CENTER_BOTH,

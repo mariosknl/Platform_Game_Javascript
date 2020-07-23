@@ -5,13 +5,12 @@ import Human from '../Objects/Human';
 import gameOpt from '../config/gameOptions';
 
 export default class GameScene extends Phaser.Scene {
-  constructor(scene, background, enemy, nextScene, selfScale = 3) {
+  constructor(scene, background, enemy, nextScene) {
     super(scene);
     this.selfScene = scene;
     this.enemy = enemy;
     this.background = background;
     this.nextScene = nextScene;
-    this.selfScale = selfScale;
   }
 
   preload() {
@@ -29,7 +28,7 @@ export default class GameScene extends Phaser.Scene {
       gameOpt.gameOptions.currentScene = 3;
       this.speedIncrease = gameOpt.gameOptions.thirdSceneSpeed;
     }
-    this.add.image(800, 600, this.background).setScrollFactor(1, 0);
+    this.add.image(400, 300, this.background).setScrollFactor(1, 0);
 
     this.platforms = this.physics.add.staticGroup();
     if (gameOpt.gameOptions.currentScene === 1) {
@@ -86,7 +85,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.cameras.main.startFollow(this.player);
 
-    this.cameras.main.setDeadzone(this.scale.width * 1.5);
+    this.cameras.main.setDeadzone(this.scale.width);
 
     this.humans = this.physics.add.group({
       classType: Human,
