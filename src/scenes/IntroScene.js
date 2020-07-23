@@ -35,12 +35,15 @@ export default class IntroScene extends Phaser.Scene {
     this.createdByTween = this.tweens.add({
       targets: this.createdByText,
       y: -400,
-      duration: 8000,
+      duration: 25000,
       delay: 2000,
       onComplete: (() => {
         this.scene.start('Title');
       }),
     });
+
+    this.bgMusic = this.sound.add('bgMusic', { volume: 0.5, loop: true });
+    this.bgMusic.play();
   }
 
   update() {

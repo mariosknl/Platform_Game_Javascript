@@ -21,7 +21,8 @@ export default class Ranking extends Phaser.Scene {
       this.count += 1;
       if (this.count < 10) {
         const st = this.count === 1 ? 'ST' : 'ND';
-        this.add.text(config.width / 2 - 80, this.position, `${this.count}${st} ${res.score} ${res.user}`).setTint(0xf4a261);
+        const style = { fontSize: '32px' };
+        this.add.text(config.width / 2 - 120, this.position, `${this.count}${st} ${res.score} ${res.user}`, style).setTint(0xf4a261);
         this.position += 25;
       }
     });
