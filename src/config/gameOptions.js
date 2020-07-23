@@ -1,5 +1,5 @@
 const gameOptions = {
-  score: 0,
+  score: 1,
   userName: '',
   firstSceneSpeed: 100,
   secondSceneSpeed: 200,
