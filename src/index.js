@@ -12,7 +12,6 @@ import Model from './Model/model';
 import background from './Objects/background';
 import Dialogue from './scenes/Dialogue';
 import story from './Objects/dialog';
-import api from './config/apiconf';
 import userRecord from './scenes/userRecord';
 import ranking from './scenes/ranking';
 
@@ -32,6 +31,7 @@ class Game extends Phaser.Game {
     this.scene.add('Credits', CreditsScene);
     this.scene.add('Game', GameScene);
     this.scene.add('rexUI', userRecord);
+    this.scene.add('ranking', ranking);
 
     this.scene.add('Intro', IntroScene);
     this.scene.add('First', new GameScene('First', background.background[0], 'move', 'Dialog1'));

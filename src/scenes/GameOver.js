@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import Button from '../Objects/Βutton';
+import config from '../config/config';
 
 export default class GameOver extends Phaser.Scene {
   constructor() {
@@ -13,10 +14,13 @@ export default class GameOver extends Phaser.Scene {
   create() {
     this.add.image(400, 300, 'gameOver');
 
-    const { width } = this.scale;
-    const { height } = this.scale;
+    this.gameBtn = new Button(this, config.width / 2, config.height / 2, 'grey_button1', 'grey_button2', 'Try Again', this.prevScene);
 
-    this.add.text(width * 0.5, height * 0.5, 'Game Over', {
+    this.scoreBtn = new Button(this, config.width / 2, config.height / 2 + 100, 'grey_button1', 'grey_button2', 'Save Score', 'rexUI');
+
+    this.titleBtn = new Button(this, config.width / 2, config.height / 2 + 200, 'grey_button1', 'grey_button2', 'Menu', 'Title');
+
+    this.add.text(config.width * 0.5, config.height / 2 - 200, 'Game Over', {
       fontSize: 48,
     }).setOrigin(0.5);
 

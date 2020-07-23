@@ -18,6 +18,8 @@ export default class TitleScene extends Phaser.Scene {
     this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 100,
       'grey_button1', 'grey_button2', 'Credits', 'Credits');
 
+    this.rankingBtn = new Button(this, config.width / 2, config.height / 2 + 200, 'grey_button1', 'grey_button2', 'Ranking', 'Ranking');
+
     this.model = this.sys.game.globals.model;
     if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
       this.bgMusic = this.sound.add('bgMusic', { volume: 0.8, loop: true });

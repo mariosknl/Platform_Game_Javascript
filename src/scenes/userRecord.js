@@ -1,6 +1,8 @@
+/* eslint-disable no-underscore-dangle */
 import Phaser from 'phaser';
 import api from '../config/apiconf';
 import gameOpt from '../config/gameOptions';
+
 
 export default class userRecord extends Phaser.Scene {
   constructor() {
@@ -20,20 +22,31 @@ export default class userRecord extends Phaser.Scene {
   }
 
   create() {
+    this.add.image(400, 300, 'background');
+
     const keyObj = this.input.keyboard.addKey('Enter');
     const printText = this.add.rexBBCodeText(400, 300, 'abc', {
-      color: 'red',
-      fontSize: '26px',
+      color: 'yellow',
+      fontSize: '24px',
       fixedWidth: 200,
-      backgroundColor: '#222222',
+      backgroundColor: '#333333',
     })
       .setOrigin(0.5)
       .setInteractive()
       .on('pointerdown', () => {
+        console.log(printText);
         this.count = 0;
         this.plugins.get('rextexteditplugin').edit(printText);
-        keyObj.on('down', () => { if (this.count === 0) this.count = 1; });
+        keyObj.on('down', () => {
+          if (this.count === 0) {
+            this.count = 1;
+            // eslint-disable-next-line no-underscore-dangle
+            api.postScore(printText._text, gameOpt.gameOptions.score);
+            this.scene.start('Title');
+          }
+        });
       }, this);
-    this.add.text(0, 500, 'Click here to put your name. Press Enter to Save');
+
+    this.add.text(0, 580, 'Click text to start editing, press enter key to stop editing');
   }
 }

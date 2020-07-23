@@ -41,6 +41,6 @@
   "dependencies": {
     "axios": "^0.19.2",
     "phaser": "^3.24.1",
-    "phaser3-rex-plugins": "^1.1.20"
+    "phaser3-rex-plugins": "^1.1.21"
   }
 }
