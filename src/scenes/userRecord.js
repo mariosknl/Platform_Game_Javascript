@@ -32,7 +32,7 @@ export default class userRecord extends Phaser.Scene {
       .on('pointerdown', () => {
         this.count = 0;
         this.plugins.get('rextexteditplugin').edit(printText);
-        keyObj.on('down', () => { if (this.count === 0) console.log('is down'); this.count = 1; });
+        keyObj.on('down', () => { if (this.count === 0) this.count = 1; });
       }, this);
     this.add.text(0, 500, 'Click here to put your name. Press Enter to Save');
   }

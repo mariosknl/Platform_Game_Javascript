@@ -67,16 +67,6 @@ export default class GameScene extends Phaser.Scene {
 
     this.player = this.physics.add.sprite(240, 320, 'zombie').setScale(0.5);
 
-    this.anims.create({
-      key: 'jump',
-      frames: this.anims.generateFrameNumbers('zombie', {
-        start: 8,
-        end: 10,
-      }),
-      frameRate: 6,
-      repeat: -1,
-    });
-
     this.physics.add.collider(this.platforms, this.player);
 
     this.player.body.checkCollision.up = false;
@@ -139,29 +129,13 @@ export default class GameScene extends Phaser.Scene {
 
         this.addHumanAbove(platform);
       }
-
-      this.humans.children.iterate(child => {
-        const human = child;
-
-        const { scrollY } = this.cameras.main;
-        if (human.y >= scrollY + 800) {
-          human.y = scrollY - Phaser.Math.Between(50, 100);
-          human.body.updateFromGameObject();
-        }
-      });
     });
     const touchingDown = this.player.body.touching.down;
 
     if (touchingDown) {
       this.player.setVelocityY(-300);
-      this.player.anims.play('jump');
       this.sound.play('jump');
     }
-
-    // const vy = this.player.body.velocity.y;
-    // if (vy > 0 && this.player.texture.key !== 'zombie') {
-    //   this.player.setTexture('zombie');
-    // }
 
     if (this.cursors.left.isDown && !touchingDown) {
       this.player.setVelocityX(-200);
