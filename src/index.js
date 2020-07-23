@@ -34,9 +34,9 @@ class Game extends Phaser.Game {
     this.scene.add('rexUI', userRecord);
 
     this.scene.add('Intro', IntroScene);
-    this.scene.add('First', new GameScene('First', background.background[0], 'move', 'Dialog1'));
+    this.scene.add('First', new GameScene('First', background.background[0], 'human', 'Dialog1'));
     this.scene.add('Second', new GameScene('Second', background.background[1], 'fMove', 'Dialog2'));
-    this.scene.add('Third', new GameScene('Third', background.background[2], 'move', 'Dialog3'));
+    this.scene.add('Third', new GameScene('Third', background.background[2], 'human', 'Dialog3'));
 
     this.scene.add('Dialog1', new Dialogue('Dialog1', 'Stage 1 Cleared', story.dialog[0][0], 'Second'));
     this.scene.add('Dialog2', new Dialogue('Dialog2', 'Stage 2 Cleared', story.dialog[0][1], 'Third'));

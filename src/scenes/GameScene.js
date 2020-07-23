@@ -5,12 +5,13 @@ import Human from '../Objects/Human';
 import gameOpt from '../config/gameOptions';
 
 export default class GameScene extends Phaser.Scene {
-  constructor(scene, background, enemy, nextScene) {
+  constructor(scene, background, enemy, nextScene, selfScale = 3) {
     super(scene);
     this.selfScene = scene;
     this.enemy = enemy;
     this.background = background;
     this.nextScene = nextScene;
+    this.selfScale = selfScale;
   }
 
   preload() {
@@ -66,6 +67,16 @@ export default class GameScene extends Phaser.Scene {
     }
 
     this.player = this.physics.add.sprite(240, 320, 'zombie').setScale(0.5);
+
+    this.anims.create({
+      key: 'jump',
+      frames: this.anims.generateFrameNumbers('zombie', {
+        start: 8,
+        end: 10,
+      }),
+      frameRate: 6,
+      repeat: -1,
+    });
 
     this.physics.add.collider(this.platforms, this.player);
 
@@ -134,6 +145,7 @@ export default class GameScene extends Phaser.Scene {
 
     if (touchingDown) {
       this.player.setVelocityY(-300);
+      this.player.anims.play('jump');
       this.sound.play('jump');
     }
 
