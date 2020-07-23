@@ -8,17 +8,15 @@ export default class GameOver extends Phaser.Scene {
   }
 
   init(data) {
-    this.prevScene = data.prevScene;
+    this.previousScene = data.previousScene;
   }
 
   create() {
     this.add.image(400, 300, 'gameOver');
 
-    this.gameBtn = new Button(this, config.width / 2, config.height / 2, 'grey_button1', 'grey_button2', 'Try Again', this.prevScene);
+    this.titleBtn = new Button(this, config.width / 2, config.height / 2 + 200, 'grey_button1', 'grey_button2', 'Menu', 'Title');
 
     this.scoreBtn = new Button(this, config.width / 2, config.height / 2 + 100, 'grey_button1', 'grey_button2', 'Save Score', 'rexUI');
-
-    this.titleBtn = new Button(this, config.width / 2, config.height / 2 + 200, 'grey_button1', 'grey_button2', 'Menu', 'Title');
 
     this.add.text(config.width * 0.5, config.height / 2 - 200, 'Game Over', {
       fontSize: 48,

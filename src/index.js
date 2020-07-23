@@ -14,17 +14,12 @@ import Dialogue from './scenes/Dialogue';
 import story from './Objects/dialog';
 import userRecord from './scenes/userRecord';
 import ranking from './scenes/ranking';
-import api from './config/apiconf';
 
 
 class Game extends Phaser.Game {
   constructor() {
     super(config);
-    api.postScore('John Doe', 1);
-    console.log(api.postScore);
-    // api.getScore();
-    // api.postScore('Maria Doe', 2);
-    // console.log(api.postScore);
+
     const model = new Model();
     this.globals = { model, bgMusic: null };
     this.scene.add('Boot', Bootscene);

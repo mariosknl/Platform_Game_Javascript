@@ -85,7 +85,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.cameras.main.startFollow(this.player);
 
-    this.cameras.main.setDeadzone(this.scale.width);
+    this.cameras.main.setDeadzone(this.scale.width * 1.2);
 
     this.humans = this.physics.add.group({
       classType: Human,
@@ -96,9 +96,9 @@ export default class GameScene extends Phaser.Scene {
       key: 'move',
       frames: this.anims.generateFrameNumbers('human', {
         start: 19,
-        end: 22,
+        end: 21,
       }),
-      frameRate: 4,
+      frameRate: 2,
       repeat: -1,
     });
 
@@ -106,9 +106,9 @@ export default class GameScene extends Phaser.Scene {
       key: 'fMove',
       frames: this.anims.generateFrameNumbers('woman', {
         start: 19,
-        end: 22,
+        end: 21,
       }),
-      frameRate: 4,
+      frameRate: 2,
       repeat: -1,
     });
 
@@ -225,11 +225,11 @@ export default class GameScene extends Phaser.Scene {
   }
 
   changeScene() {
-    if (gameOpt.gameOptions.score === 2 && this.selfScene === 'First') {
+    if (gameOpt.gameOptions.score === 30 && this.selfScene === 'First') {
       this.scene.start('Dialog1');
-    } else if (gameOpt.gameOptions.score === 4 && this.selfScene === 'Second') {
+    } else if (gameOpt.gameOptions.score === 75 && this.selfScene === 'Second') {
       this.scene.start('Dialog2');
-    } else if (gameOpt.gameOptions.score === 5 && this.selfScene === 'Third') {
+    } else if (gameOpt.gameOptions.score === 125 && this.selfScene === 'Third') {
       this.scene.start('rexUI');
     }
   }

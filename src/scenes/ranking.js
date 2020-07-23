@@ -11,21 +11,21 @@ export default class Ranking extends Phaser.Scene {
   async create() {
     this.add.image(400, 300, 'background');
 
-    this.add.text(100, 200, 'POS SCORE NAME').setTint(0xff00ff);
+    this.add.text(config.width / 2 - 80, 50, 'POS SCORE NAME').setTint(0xff00ff);
     this.score = await api.getScore();
 
     this.count = 0;
-    this.position = 130;
+    this.position = 70;
     this.sortScore = this.score.result.sort((a, b) => (a.score > b.score ? -1 : 1));
     this.sortScore.forEach((res) => {
       this.count += 1;
       if (this.count < 10) {
         const st = this.count === 1 ? 'ST' : 'ND';
-        this.add.text(100, this.position, `${this.count}${st} ${res.score} ${res.user}`).setTint(0xff0000);
+        this.add.text(config.width / 2 - 80, this.position, `${this.count}${st} ${res.score} ${res.user}`).setTint(0xf4a261);
         this.position += 25;
       }
     });
 
-    this.menuBtn = new Button(this, config.width / 2, config.height / 2, +100, 'grey_button1', 'grey_button2', 'Menu', 'Title');
+    this.menuBtn = new Button(this, config.width / 2, 500, 'grey_button1', 'grey_button2', 'Menu', 'Title');
   }
 }

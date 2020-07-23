@@ -28,8 +28,8 @@ export default class IntroScene extends Phaser.Scene {
     this.introTween = this.tweens.add({
       targets: this.introText,
       y: -200,
-      duration: 3000,
-      delay: 1000,
+      duration: 5000,
+      delay: 2000,
     });
 
     this.createdByTween = this.tweens.add({
