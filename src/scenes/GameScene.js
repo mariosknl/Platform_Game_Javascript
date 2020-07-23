@@ -33,7 +33,7 @@ export default class GameScene extends Phaser.Scene {
     this.platforms = this.physics.add.staticGroup();
     if (gameOpt.gameOptions.currentScene === 1) {
       for (let i = 0; i < 5; i++) {
-        const x = Phaser.Math.Between(80, 400);
+        const x = Phaser.Math.Between(100, 450);
         const y = 150 * i;
 
         const platform = this.platforms.create(x, y, 'platform');
@@ -85,7 +85,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.cameras.main.startFollow(this.player);
 
-    this.cameras.main.setDeadzone(this.scale.width * 1.2);
+    this.cameras.main.setDeadzone(this.scale.width * 1.5);
 
     this.humans = this.physics.add.group({
       classType: Human,
@@ -169,7 +169,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   horizontalWrap(sprite) {
-    const halfWidth = sprite.displayWidth * 0.5;
+    const halfWidth = sprite.displayWidth;
     const gameWidth = this.scale.width;
 
     if (sprite.x < -halfWidth) {
