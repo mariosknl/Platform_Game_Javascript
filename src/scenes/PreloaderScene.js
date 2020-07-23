@@ -92,6 +92,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('platform', '../src/assets/ground_grass.png');
     this.load.image('platform2', '../src/assets/sand.png');
     this.load.image('platform3', '../src/assets/snow.png');
+    this.load.image('gameOver', '../src/assets/bg/gameOver.jpg');
     this.load.audio('bgMusic', '../src/assets/audio/intro.mp3');
     this.load.audio('jump', '../src/assets/audio/footstep_grass_001.mp3');
     this.load.audio('death', '../src/assets/audio/death.mp3');
