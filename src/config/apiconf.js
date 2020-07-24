@@ -1,3 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import 'regenerator-runtime';
+
 const axios = require('axios');
 
 const apiconf = async () => {
