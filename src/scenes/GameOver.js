@@ -7,10 +7,6 @@ export default class GameOver extends Phaser.Scene {
     super('game-over');
   }
 
-  init(data) {
-    this.previousScene = data.previousScene;
-  }
-
   create() {
     this.add.image(400, 300, 'gameOver');
 

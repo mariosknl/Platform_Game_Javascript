@@ -31,11 +31,11 @@ export default class Dialogue extends Phaser.Scene {
       background: scene.rexUI.add.roundRectangle(50, 50, 100, 100, 20, 0x264653),
 
       title: scene.rexUI.add.label({
-        background: scene.rexUI.add.roundRectangle(50, 50, 100, 100, 20, 0x2a9d8f),
-        text: scene.add.text(0, 0, '', {
+        background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 20, 0x2a9d8f),
+        text: scene.add.text(200, 200, '', {
           fontSize: '22px',
-          align: 'center',
         }),
+        align: 'center',
       }),
 
       content: scene.add.text(0, 0, '', {
@@ -56,6 +56,10 @@ export default class Dialogue extends Phaser.Scene {
             right: 10,
             top: 10,
             bottom: 10,
+          },
+
+          align: {
+            actions: 'center',
           },
         }),
       ],

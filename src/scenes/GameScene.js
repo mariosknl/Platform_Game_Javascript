@@ -165,11 +165,12 @@ export default class GameScene extends Phaser.Scene {
       this.scene.start('game-over');
       this.sound.play('death');
       this.sound.play('loser');
+      gameOpt.gameOptions.score = 1;
     }
   }
 
   horizontalWrap(sprite) {
-    const halfWidth = sprite.displayWidth / 4;
+    const halfWidth = sprite.displayWidth * 0.5;
     const gameWidth = this.scale.width;
 
     if (sprite.x < -halfWidth) {
@@ -180,9 +181,10 @@ export default class GameScene extends Phaser.Scene {
   }
 
   addHumanAbove(sprite) {
+    this.placeholder = this.currentScene === 'Second' ? 'woman' : 'human';
     const y = sprite.y - sprite.displayHeight;
 
-    const human = this.humans.get(sprite.x, y, 'human');
+    const human = this.humans.get(sprite.x, y, this.placeholder);
 
     human.setActive(true);
     human.setVisible(true);
@@ -198,13 +200,13 @@ export default class GameScene extends Phaser.Scene {
 
   handleCollectHumans(player, human) {
     this.humans.killAndHide(human);
-    if (gameOpt.gameOptions.score % 4 === 0) {
+    if (gameOpt.gameOptions.score % 3 === 0) {
       this.sound.play('killHim');
     }
 
     this.physics.world.disableBody(human.body);
 
-    gameOpt.gameOptions.score += 1;
+    gameOpt.gameOptions.score += 10;
     const value = `Humans Slaughtered: ${gameOpt.gameOptions.score}`;
     this.humansCollectedText.text = value;
   }
@@ -225,12 +227,12 @@ export default class GameScene extends Phaser.Scene {
   }
 
   changeScene() {
-    if (gameOpt.gameOptions.score === 30 && this.selfScene === 'First') {
+    if (gameOpt.gameOptions.score === 11 && this.selfScene === 'First') {
       this.scene.start('Dialog1');
-    } else if (gameOpt.gameOptions.score === 75 && this.selfScene === 'Second') {
+    } else if (gameOpt.gameOptions.score === 55 && this.selfScene === 'Second') {
       this.scene.start('Dialog2');
-    } else if (gameOpt.gameOptions.score === 125 && this.selfScene === 'Third') {
-      this.scene.start('rexUI');
+    } else if (gameOpt.gameOptions.score === 100 && this.selfScene === 'Third') {
+      this.scene.start('Dialog3');
     }
   }
 }
