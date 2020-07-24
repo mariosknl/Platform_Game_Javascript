@@ -227,11 +227,11 @@ export default class GameScene extends Phaser.Scene {
   }
 
   changeScene() {
-    if (gameOpt.gameOptions.score === 11 && this.selfScene === 'First') {
+    if (gameOpt.gameOptions.score === 251 && this.selfScene === 'First') {
       this.scene.start('Dialog1');
-    } else if (gameOpt.gameOptions.score === 55 && this.selfScene === 'Second') {
+    } else if (gameOpt.gameOptions.score === 551 && this.selfScene === 'Second') {
       this.scene.start('Dialog2');
-    } else if (gameOpt.gameOptions.score === 100 && this.selfScene === 'Third') {
+    } else if (gameOpt.gameOptions.score === 1201 && this.selfScene === 'Third') {
       this.scene.start('Dialog3');
     }
   }
