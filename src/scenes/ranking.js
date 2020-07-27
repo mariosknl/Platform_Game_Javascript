@@ -19,6 +19,7 @@ export default class Ranking extends Phaser.Scene {
     this.count = 0;
     this.position = 100;
     this.sortScore = this.score.result.sort((a, b) => (a.score > b.score ? -1 : 1));
+
     this.sortScore.forEach((res) => {
       this.count += 1;
       if (this.count < 11) {

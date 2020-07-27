@@ -165,7 +165,6 @@ export default class GameScene extends Phaser.Scene {
       this.scene.start('game-over');
       this.sound.play('death');
       this.sound.play('loser');
-      gameOpt.gameOptions.score = 1;
     }
   }
 
